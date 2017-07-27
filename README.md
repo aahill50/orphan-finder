@@ -21,6 +21,16 @@ npm install orphan-finder --save-dev
 ## Usage:
 After installing this package to your project, create a new .js file and require the package in it. In the file, call the required package with any desired options. Finally, run the file from the command line to generate the list of orphaned files and failed requires.
 
+You can customize your usage with the following options:
+| Option  | Type | Default Value | More Details |
+| ------- | -----| ------------- |--------------|
+| globPattern | string | '*\*\/\*.\*'  | [node-glob](https://github.com/isaacs/node-glob#glob-primer) |
+| globIgnore | string \| array[string] | 'node_modules\/**' | [node-glob](https://github.com/isaacs/node-glob#glob-primer) |
+| babelOptions | object | {} | [babel](https://babeljs.io/docs/core-packages/#options) |
+| resolveOptions | object | See below | [enhanced-resolve](https://github.com/webpack/enhanced-resolve#resolver-options) |
+| resolveOptions.modules | array[string] | ['node_modules'] | [enhanced-resolve](https://github.com/webpack/enhanced-resolve#resolver-options) |
+| resolveOptions.extensions | array[string] | ['.js', '.jsx', '.json', '.html'] | [enhanced-resolve](https://github.com/webpack/enhanced-resolve#resolver-options) |
+
 ###### Example:
 ```js
 // Example filename: scripts/findOrphanedFiles.js
