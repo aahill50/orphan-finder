@@ -8,7 +8,7 @@ const { transformFileSync } = require('babel-core');
 const { ResolverFactory, NodeJsInputFileSystem, CachedInputFileSystem } = require('enhanced-resolve');
 const defaultOptions = require('./defaultOptions');
 const merge = require('lodash.merge');
-const {writeArrayToFile} = require('./utils');
+const { writeArrayToFile } = require('./utils');
 
 const FindOrphanedFiles = (passedOptions = {}) => {
     const options = merge({}, defaultOptions, passedOptions);
@@ -26,7 +26,7 @@ const FindOrphanedFiles = (passedOptions = {}) => {
 
             types.visit(ast, {
                 visitCallExpression(path) {
-                    if(path.value.callee.name === 'require' && path.value.arguments[0].value) {
+                    if (path.value.callee.name === 'require' && path.value.arguments[0].value) {
                         requires.push(path.value.arguments[0].value)
                     }
 
@@ -40,15 +40,14 @@ const FindOrphanedFiles = (passedOptions = {}) => {
                     filePath = path.resolve(path.dirname(_path), req);
                 }
 
-                try {
+                allFailedRequires = [...allFailedRequires, ...failedRequires];
 
-            allFailedRequires = [...allFailedRequires, ...failedRequires];
-
-            if (failedRequires.length) {
-                orphanedFiles.push(_path);
-            } else {
-                validFiles.push(_path);
-            }
+                if (failedRequires.length) {
+                    orphanedFiles.push(_path);
+                } else {
+                    validFiles.push(_path);
+                }
+            })
         })
         .on('done', () => {
             console.log('Checked', orphanedFiles.length + validFiles.length, 'files');
