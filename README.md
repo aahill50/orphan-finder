@@ -22,6 +22,7 @@ npm install orphan-finder --save-dev
 After installing this package to your project, create a new .js file and require the package in it. In the file, call the required package with any desired options. Finally, run the file from the command line to generate the list of orphaned files and failed requires.
 
 You can customize your usage with the following options:
+
 | Option  | Type | Default Value | More Details |
 | ------- | -----| ------------- |--------------|
 | globPattern | string | '*\*\/\*.\*'  | [node-glob](https://github.com/isaacs/node-glob#glob-primer) |
