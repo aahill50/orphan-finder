@@ -1,6 +1,6 @@
 {
   "name": "orphan-finder",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Find orhpaned files in your project, that is, files who have missing dependencies",
   "main": "index.js",
   "author": "Aaron Hill",
