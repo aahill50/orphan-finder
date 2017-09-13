@@ -1,11 +1,11 @@
 # orphan-finder
-Find orhpaned files in your project, that is, files who have missing dependencies
+Find orphaned files in your project (files that have missing dependencies)
 
 ## Features
 This package will crawl your files identifying any files that have faulty require statements.
 A file containing an array of these "orphaned files" will be created along with a file that identifies the require statements that actually failed.
 
-This package uses [babel-core](https://github.com/babel/babel/tree/7.0/packages/babel-core) to transform each file and generate it's ast, which is how `require` statements are extracted. Options can be passed to `babel-core` using `options.babelOptions`.
+This package uses [babel-core](https://github.com/babel/babel/tree/7.0/packages/babel-core) to transform each file and generate it's AST, which is how `require` statements are extracted. Options can be passed to `babel-core` using `options.babelOptions`.
 
 This package uses [enhanced-resolve](https://github.com/webpack/enhanced-resolve) to check if each `require` statement is valid. Options can be passed to `enhanced-resolve` via `options.resolveOptions`. This is the same package used by [webpack](https://webpack.js.org/) to resolve modules and additional information on it's usage can be found [here](https://webpack.js.org/configuration/resolve/)
 
